@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+
+logging:
+  config: classpath:log4j2.yml
+
+spring:
+  profiles:
+    include: develop
+  banner:
+    image:
+      location: classpath:banner.png
+      width: 115
+      height: 15
+      bitdepth: 4
+      pixelmode: text
+      margin: 0
