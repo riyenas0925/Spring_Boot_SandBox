@@ -1,8 +1,6 @@
-# GodGajiQuiz_Backend
-
-## Github Actions, CodeCov
-![Java CI with Gradle](https://github.com/GodGaji/GajiQuiz_Backend/workflows/Java%20CI%20with%20Gradle/badge.svg) [![codecov](https://codecov.io/gh/GodGaji/GajiQuiz_Backend/branch/develop/graph/badge.svg?token=4TF89ZY3PH)](https://codecov.io/gh/GodGaji/GajiQuiz_Backend)
+# Spring Boot SandBox
+스프링과 관련된 이것저것을 해보는 놀이터
 
 ## Jenkins, Jacoco
 [![Build Status](https://jenkins.riyenas.dev/job/Sandbox_Pipeline/badge/icon)](https://jenkins.riyenas.dev/job/Sandbox_Pipeline/)
-![coverage](https://img.shields.io/jenkins/coverage/api.svg?jobUrl=https://jenkins.riyenas.dev/job/Sandbox_Pipeline/)
+[![coverage](https://img.shields.io/jenkins/coverage/api.svg?jobUrl=https://jenkins.riyenas.dev/job/Sandbox_Pipeline/)](https://jenkins.riyenas.dev/job/Sandbox_Pipeline/coverage/)
