@@ -1,0 +1,15 @@
+version: "3"
+services:
+  mariadb:
+    container_name: gajiauiz_db
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: sa
+      MYSQL_DATABASE: mariadb
+  app:
+    container_name: gajiquiz_api
+    build: .    
+    ports:
+      - 8080:8080
+    depends_on:
+      - mariadb
