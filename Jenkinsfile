@@ -5,14 +5,15 @@ pipeline {
       steps {
         slackSend(channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         sh '''chmod +x ./gradlew
-./gradlew clean build --exclude-task test'''
+./gradlew clean build --exclude-task test -Dgradle.user.home=$HOME/.gradle
+'''
         stash(name: 'build-artifacts', includes: '**/build/libs/*.jar')
       }
     }
 
     stage('Test') {
       steps {
-        sh '''./gradlew test
+        sh '''./gradlew test -Dgradle.user.home=$HOME/.gradle
 '''
         stash(name: 'test-artifacts', includes: '**/build/test-results/test/TEST-*.xml')
       }
@@ -66,22 +67,22 @@ pipeline {
         }
 
       }
-      steps{
+      steps {
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
+            dockerImage.push('latest')
 
           }
         }
+
       }
     }
 
     stage('Remove Unused Docker Image') {
-      steps{
+      steps {
         sh "docker rmi $imageName:$BUILD_NUMBER"
         sh "docker rmi $imageName:latest"
-
       }
     }
 
