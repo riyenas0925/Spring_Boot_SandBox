@@ -5,6 +5,7 @@ pipeline {
       steps {
         slackSend(channel: '#jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         sh '''chmod +x ./gradlew
+./gradlew stop
 ./gradlew clean build --exclude-task test -Dgradle.user.home=$HOME/.gradle
 '''
         stash(name: 'build-artifacts', includes: '**/build/libs/*.jar')
